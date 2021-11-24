@@ -3,8 +3,8 @@
 
 int main()
 {
-int xsize=14;
-int ysize=14;
+int xsize = 30;
+int ysize = 30;
 int xhalf=xsize/2;
 int frthx=xhalf/2;
 char mazearea[xsize][ysize];
