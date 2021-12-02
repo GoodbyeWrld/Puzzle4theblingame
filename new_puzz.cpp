@@ -9,22 +9,44 @@ class want_to_play
     std::string playorno;
     
     public:
-    want_to_play()
+    want_to_play(std::string pn)
     {
-    std::cout << "Would you like to play"<<std::endl; //can you c in this from mai
-    std::cin>>playorno;
+        playorno = pn;
     if(playorno == "yes")
     {
         num_of_plays++; //may have to return value and add to func header
-    };
+    }
     }//in the main ave playorno variable =getplayorno
     
-    void play_again() //can you c in this from main
+    std::string play_again() //can you c in this from main
     {
-    std::cout<<" Wanna play again?"<< std::endl;
-    num_of_plays++; //may have to return value and add to func header
+    bool ans;
+    std::cout<<"Wanna play again?(enter 1(yes) or 2(no): "<< std::endl;
+    std::cin >> ans;
+    if (ans!= 1||0)
+    {
+        std::cout<<"Invalid input, Wanna play again?(enter yes or no): "<< std::endl;
+    }
+    if (ans == 0)
+    {
+        playorno = "no";
+        return playorno; 
+        
+    }
+    else 
+    {
+        num_of_plays++;
+        return playorno; 
+    } 
+    
+   
+    //may have to return value and add to func header
     }//could also create  aget func can call in both construct and play again func
-
+    std::string getplayagain()
+    {
+        
+        return playorno;
+    }
 };
 
 class Map 
@@ -33,59 +55,56 @@ class Map
     int array_sizex;
     int array_sizey;
     //char maparr[array_size][array_size];
-    char *Ptrto_map;
+    char **Ptrto_map;
 
-    Map()
-    {
-        while (difficulty!=1||2||3)
-        {
-            std::cout << "what difficulty would you like"<<"Enter (1) for easy, (2) for medium, (3) for hard"<<std::endl;
-            std::cin >> difficulty;
-            if (difficulty == 1)
-            {
-                array_sizex=12;
-                array_sizey=12;
-            }
-            if (difficulty = 2)
-            {
-                array_sizex=20;
-                array_sizey=20;
-            }
-            if (difficulty = 3)
-            {
-                array_sizex=32;
-                array_sizey=32; 
-            }
-            else
-            {
-                std::cout<<"Incorrect input needs to be 1,2, or 3: "<<std::endl;
-            }
-        }
-    
-    }
+   public:
     //array_size = //convert diffiluty to size of array
-     
-    char* Create_map()
+    int getdiff()
+    {
+        return difficulty;
+    }
+     void setdiff(int di)
+    {
+        difficulty=di;
+    }
+     int getarrx()
+    {
+        return array_sizey;
+    }
+     int getarry()
+    {
+        return array_sizex;
+    } void setarrx(int arx)
+    {
+        array_sizex=arx;
+    }
+     void setarry(int ary)
+    {
+        array_sizey=ary;
+    }
+
+    char** Create_map()
     {
     //Use char maparr = // Create an array according to difficulty specified fill with char
-    char maparr[array_sizex][array_sizey]; //update
+    char** maparrptr= new char *[array_sizex]; //update
     //char *ptrtomap = maparr;
     //return char* array;
-    for (size_t i = 0; i < array_sizex; i++)
+    for (int i = 0; i < array_sizex; i++)
     {
-        for (size_t i2 = 0; i2 < array_sizex; i2++)
-        maparr[i][i2]='.'; 
+        maparrptr[i] = new char[array_sizex];
+        for (int i2 = 0; i2 < array_sizex; i2++)
+        maparrptr[i][i2] = '.'; 
     }
-    return *maparr;
+    return maparrptr;
     };
 
-    char* getptrtomap ()
+    char** getptrtomap ()
     {
-        return Create_map();
+        return Create_map(); 
     }
 };
 
-
+/*
 class fObject
 {
     std::string name_obj;
@@ -202,3 +221,76 @@ class Playscape
  
 
 };
+*/
+
+int main()
+
+{
+    std::string playorno = "yes";
+
+   
+    want_to_play wantt(playorno);
+    Map mapintiial;
+    int difficulty;
+    int array_sizex;
+    int array_sizey;
+    
+    while (wantt.getplayagain() == "yes")
+    {
+        do
+        {
+            std::cout << "What difficulty would you like, enter (1) for easy, (2) for medium, (3) for hard: "<<std::endl;
+            std::cin >> difficulty;
+            if (difficulty == 1)
+            {
+                mapintiial.setdiff(1);
+                array_sizex = 12;
+                mapintiial.setarrx(12);
+                array_sizey = 12;
+                mapintiial.setarry(12);
+                //mapintiial.getptrtomap();
+                //char** maparrptr
+                char **arraytomap[array_sizex][array_sizex];
+                **arraytomap = mapintiial.Create_map();
+                break;
+            }
+            else if (difficulty = 2)
+            {
+                mapintiial.setdiff(2);
+                array_sizex = 20;
+                mapintiial.setarrx(20);
+                array_sizey = 20;
+                mapintiial.setarry(20);
+                //char** maparrptr
+                char **arraytomap[array_sizex][array_sizex];
+                **arraytomap = mapintiial.Create_map();
+                break;
+            }
+            else if (difficulty = 3)
+            {
+                mapintiial.setdiff(3);
+                array_sizex = 32;
+                mapintiial.setarrx(32);
+                array_sizey = 32;
+                mapintiial.setarry(32);
+                //mapintiial.getptrtomap();
+                //char** maparrptr
+                char **arraytomap[array_sizex][array_sizex];
+                **arraytomap = mapintiial.Create_map();
+                break;
+            }
+            else
+            {
+                std::cout<<"Incorrect input needs to be 1,2, or 3: "<<std::endl;
+            }
+        } while (mapintiial.getdiff()!=1 || mapintiial.getdiff()!= 2|| mapintiial.getdiff()!=3);
+        wantt.play_again();
+    }
+
+    std::cout << "thanks for playing"<<std::endl;
+
+    system("pause");
+    return 0;
+
+}
+
