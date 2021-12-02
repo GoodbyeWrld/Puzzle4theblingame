@@ -56,6 +56,7 @@ class Map
     int array_sizey;
     //char maparr[array_size][array_size];
     char **Ptrto_map;
+    friend class Playscape;
 
    public:
     //array_size = //convert diffiluty to size of array
@@ -104,69 +105,6 @@ class Map
     }
 };
 
-/*
-class fObject
-{
-    std::string name_obj;
-    char char_obj;
-    char char_obj;
-    fObject()
-    {
-    //random determination of rock water or fir
-    //name_obj = Depstd::endling on this decide std::string nam
-    //setchar_ob(std::string)
-    //Subobj(char obj
-    }
-    char Subobj(char obj); // returns lower case letter of what ever letter
-    std::string getname_ob();
-    void setchar_ob(std::string); //sets the first letter of the std::string std::string_obj to char_obj
-    char getchar(); //add characteristics to points surrounding whatever positions are assigned to a char based off the char
-    void playObjsound(char);
-};
-
-
-class wObject
-{
-    std::string name_obj;
-    char char_obj;
-    char char_obj;
-    wObject()
-    {
-        //random determination of rock water or fire
-        //name_obj = Depstd::endling on this decide std::string name
-        //setchar_ob(std::string);
-        //Subobj(char obj)
-    }
-    char Subobj(char obj); // returns lower case letter of what ever letter
-    std::string getname_ob();
-    void setchar_ob(std::string); //sets the first letter of the std::string std::string_obj to char_obj
-    char getchar(); //add characteristics to points surrounding whatever positions are assigned to a char based off the char
-    void playObjsound(char);
-};
-
- 
-class rObject
-{
-    std::string name_obj;
-    char char_obj;
-    char char_obj;
-    rObject()
-    {
-        //random determination of rock water or fire
-        //name_obj = Depstd::endling on this decide std::string nam
-        //setchar_ob(std::string)
-        //Subobj(char obj)
-    }
-    char Subobj(char obj); // returns lower case letter of what ever lette
-    std::string getname_ob();
-    void setchar_ob(std::string); //sets the first letter(Capital) of the std::string std::string_obj to char_ob
-    char getchar(); //add characteristics to points surrounding whatever positions are assigned to a char based off the cha
-    void playObjsound(char);
-
-};
-
- 
-
 
 
 class Playscape
@@ -177,18 +115,29 @@ class Playscape
     int num_obj = sizeof_array/8;
     int playscapeX_max; //find th
     int playscapeY_max; //find this
-    Playscape(Map::*Ptrto_map())
+    char **maptobeconvert;
+    
+
+    /*Playscape(int)
     {
+        maptobeconvert = conv;
+
+
         //Map::
         //function to createplayscape from mapobjget
         //updatedmap_andplayscape = resultafterchange;
+    }*/
+    void setmaptobconv(char[][m], int n,int m) // stioll wrong
+    {
+        maptobeconvert = mtb; //still wrong
+
     }
     void Assignobjto_playscape()
     {
         int numeachobj = num_obj/3;
-        fObject;
+        /*fObject;
         wObject;
-        rObject;
+        rObject;*/
         int objcurr;
         while(objcurr<numeachobj)
         {
@@ -211,6 +160,70 @@ class Playscape
         // make sure all of these functions are updating the map to updatedplayscape_andobj[][];
     }
 };
+
+/*
+class fObject
+{
+    std::string name_obj;
+    char char_obj;
+    fObject()
+    {
+    //random determination of rock water or fir
+    //name_obj = Depstd::endling on this decide std::string nam
+    //setchar_ob(std::string)
+    //Subobj(char obj
+    }
+    char Subobj(char obj); // returns lower case letter of what ever letter
+    std::string getname_ob();
+    void setchar_ob(std::string); //sets the first letter of the std::string std::string_obj to char_obj
+    char getchar(); //add characteristics to points surrounding whatever positions are assigned to a char based off the char
+    void playObjsound(char);
+};
+
+
+class wObject
+{
+    std::string name_obj;
+    char char_obj;
+    wObject()
+    {
+        //random determination of rock water or fire
+        //name_obj = Depstd::endling on this decide std::string name
+        //setchar_ob(std::string);
+        //Subobj(char obj)
+    }
+    char Subobj(char obj); // returns lower case letter of what ever letter
+    std::string getname_ob();
+    void setchar_ob(std::string); //sets the first letter of the std::string std::string_obj to char_obj
+    char getchar(); //add characteristics to points surrounding whatever positions are assigned to a char based off the char
+    void playObjsound(char);
+};
+
+ 
+class rObject
+{
+    std::string name_obj;
+    char char_obj;
+    rObject()
+    {
+        //random determination of rock water or fire
+        //name_obj = Depstd::endling on this decide std::string nam
+        //setchar_ob(std::string)
+        //Subobj(char obj)
+    }
+    char Subobj(char obj); // returns lower case letter of what ever lette
+    std::string getname_ob();
+    void setchar_ob(std::string); //sets the first letter(Capital) of the std::string std::string_obj to char_ob
+    char getchar(); //add characteristics to points surrounding whatever positions are assigned to a char based off the cha
+    void playObjsound(char);
+
+};
+
+ 
+
+
+
+
 
  
  class move
@@ -275,9 +288,17 @@ int main()
                 mapintiial.setarry(32);
                 //mapintiial.getptrtomap();
                 //char** maparrptr
+                
                 char **arraytomap[array_sizex][array_sizex];
                 **arraytomap = mapintiial.Create_map();
-                break;
+
+
+                Playscape Createplay;
+                Createplay;
+                
+                
+                
+
             }
             else
             {
